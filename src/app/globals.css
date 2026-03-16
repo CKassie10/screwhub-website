@@ -24,12 +24,7 @@
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 215 25% 27%;
-    --radius: 0.5rem;
-    --chart-1: 215 25% 27%;
-    --chart-2: 41 96% 40%;
-    --chart-3: 20 83% 47%;
-    --chart-4: 199 89% 48%;
-    --chart-5: 162 59% 41%;
+    --radius: 1rem;
   }
 
   .dark {
@@ -63,6 +58,46 @@
     @apply bg-background text-foreground font-body;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline tracking-tight;
   }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .metallic-shine {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shine 3s infinite linear;
+  }
+
+  @keyframes shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02];
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
 }
