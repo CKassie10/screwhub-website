@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-screw-montage",
+      "description": "High-quality montage of various industrial screws",
+      "imageUrl": "https://picsum.photos/seed/screw-hero/1200/600",
+      "imageHint": "industrial screws"
+    },
+    {
+      "id": "category-chipboard",
+      "description": "Close up of chipboard screws",
+      "imageUrl": "https://picsum.photos/seed/chipboard/400/300",
+      "imageHint": "wood screws"
+    },
+    {
+      "id": "category-drywall",
+      "description": "Black drywall screws",
+      "imageUrl": "https://picsum.photos/seed/drywall/400/300",
+      "imageHint": "drywall screws"
+    },
+    {
+      "id": "category-roofing",
+      "description": "Hex head roofing screws with washers",
+      "imageUrl": "https://picsum.photos/seed/roofing/400/300",
+      "imageHint": "roofing screws"
+    },
+    {
+      "id": "category-stainless",
+      "description": "Shiny stainless steel screws",
+      "imageUrl": "https://picsum.photos/seed/stainless/400/300",
+      "imageHint": "stainless screws"
+    },
+    {
+      "id": "category-machine",
+      "description": "Precision machine screws",
+      "imageUrl": "https://picsum.photos/seed/machine/400/300",
+      "imageHint": "machine screws"
+    },
+    {
+      "id": "category-selftapping",
+      "description": "Self-tapping metal screws",
+      "imageUrl": "https://picsum.photos/seed/selftap/400/300",
+      "imageHint": "metal screws"
+    }
+  ]
+}
