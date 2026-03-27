@@ -96,6 +96,74 @@ export const CATEGORIES: Category[] = [
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'bit-1',
+    name: 'Magnetic Socket / Nut Setter',
+    description: 'Industrial grade magnetic nut setters for rapid fastening of hex head screws.',
+    category: 'bits-sockets',
+    material: 'Chrome Vanadium Steel',
+    finish: 'Sandblasted',
+    headStyle: 'Hex',
+    driveType: '1/4" Hex Shank',
+    price: 3.50,
+    image: 'https://i.ibb.co/vvqWFYrG/MAGNETIC-SOCKET.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['1/4 X 1/4 X 65 TEKS', '1/4 X 5/16 X 65 TEKS', '1/4 X 3/8 X 65 TOPSP', 'M10 X 65', '1/4X60 BIT HOLDER'],
+    specs: { length: '65mm', diameter: 'Multiple', threadType: 'N/A' }
+  },
+  {
+    id: 'bit-2',
+    name: 'Phillips & Pozi Bits – Per Each',
+    description: 'High-performance driver bits for heavy-duty industrial and construction use.',
+    category: 'bits-sockets',
+    material: 'S2 Tool Steel',
+    finish: 'Titanium Coated',
+    headStyle: 'Driver Bit',
+    driveType: '1/4" Hex Shank',
+    price: 0.75,
+    image: 'https://i.ibb.co/Wvr8rjpN/PHILLIPS-POZI-BITS-1-PER-EACH.jpg',
+    images: [
+      'https://i.ibb.co/Wvr8rjpN/PHILLIPS-POZI-BITS-1-PER-EACH.jpg',
+      'https://i.ibb.co/WWDXL8BG/PHILLIPS-POZI-BITS-2-PER-EACH.jpg'
+    ],
+    stockStatus: 'In Stock',
+    variants: [
+      {
+        type: 'Phillips',
+        options: ['#1 X 25', '#1 X 50', '#2 X 25', '#2 X 50', '#3 X 25', '#3 X 50']
+      },
+      {
+        type: 'Pozi',
+        options: ['#1 X 25', '#1 X 50', '#2 X 25', '#2 X 150', '#2 X 50', '#2 X 75', '#3 X 25', '#3 X 50']
+      }
+    ],
+    specs: { length: '25mm-150mm', diameter: 'PH1-PH3 / PZ1-PZ3', threadType: 'N/A' }
+  },
+  {
+    id: 'bit-3',
+    name: 'Square Drive Bits – 1/4" Drive',
+    description: 'Precision square drive bits optimized for specialized board and wood screws.',
+    category: 'bits-sockets',
+    material: 'Hardened Steel',
+    finish: 'Black Oxide',
+    headStyle: 'Square',
+    driveType: '1/4" Hex Shank',
+    price: 0.95,
+    image: 'https://i.ibb.co/gF67MkDP/SQUARE-DRIVE-BITS.jpg',
+    stockStatus: 'In Stock',
+    sizes: [
+      '#0 X 25 (For #4)', 
+      '#0 X 50 (For #4)', 
+      '#1 X 25 (For #6)', 
+      '#1 X 30 (For #6)', 
+      '#1 X 50 (For #6)', 
+      '#2 X 25 (For #8)', 
+      '#2 X 50 (For #8)', 
+      '#3 X 25 (For #10)', 
+      '#3 X 50 (For #10)'
+    ],
+    specs: { length: '25mm-50mm', diameter: '#0-#3', threadType: 'N/A' }
+  },
+  {
     id: 'anchor-1',
     name: '3 Piece Expansion Anchors Assembled Z-Yellow',
     description: 'Heavy-duty 3-piece expansion anchor for concrete and masonry fastening.',

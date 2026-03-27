@@ -9,8 +9,13 @@ export interface Product {
   driveType: string;
   price: number;
   image: string;
+  images?: string[];
   stockStatus: 'In Stock' | 'Low Stock' | 'Out of Stock';
   sizes?: string[];
+  variants?: {
+    type: string;
+    options: string[];
+  }[];
   specs: {
     length: string;
     diameter: string;

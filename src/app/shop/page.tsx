@@ -3,6 +3,7 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PRODUCTS, CATEGORIES } from '@/app/lib/data';
+import { Product } from '@/app/lib/types';
 import { useState, useMemo, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -10,18 +11,121 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Filter, LayoutGrid, List, SlidersHorizontal, Search, X, RotateCcw } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
+function ProductCard({ product, viewMode }: { product: Product, viewMode: 'grid' | 'list' }) {
+  const [selectedVariantType, setSelectedVariantType] = useState<string | null>(
+    product.variants?.[0]?.type || null
+  );
+
+  const activeVariant = useMemo(() => {
+    return product.variants?.find(v => v.type === selectedVariantType);
+  }, [product.variants, selectedVariantType]);
+
+  return (
+    <Card key={product.id} className={viewMode === 'grid' ? "group hover:shadow-2xl transition-all duration-500 border-none bg-white rounded-[32px] overflow-hidden" : "flex flex-col sm:flex-row group hover:shadow-2xl transition-all duration-500 border-none bg-white rounded-[32px] overflow-hidden min-h-[220px]"}>
+      <div className={viewMode === 'grid' ? "relative aspect-square overflow-hidden bg-muted/20" : "relative w-full sm:w-64 h-64 sm:h-auto bg-muted/20 shrink-0"}>
+        {product.images && product.images.length > 1 ? (
+          <div className="flex h-full w-full">
+            {product.images.map((img, idx) => (
+              <div key={idx} className="relative flex-1 h-full hover:flex-[2] transition-all duration-500">
+                <Image 
+                  src={img} 
+                  alt={`${product.name} ${idx + 1}`} 
+                  fill 
+                  className="object-contain p-4 group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Image 
+            src={product.image} 
+            alt={product.name} 
+            fill 
+            className="object-contain p-8 group-hover:scale-110 transition-transform duration-700 ease-out"
+          />
+        )}
+      </div>
+      <div className="flex flex-col justify-between p-8 flex-grow">
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <div className="flex justify-between items-start">
+              <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.2em]">{product.category.replace(/-/g, ' ')}</p>
+              <Badge className="bg-primary/5 text-primary border-none rounded-full text-[10px] px-3 font-bold">{product.stockStatus}</Badge>
+            </div>
+            <h3 className="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors line-clamp-1">{product.name}</h3>
+            <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed">{product.description}</p>
+          </div>
+          
+          {/* Variant Selection (e.g., Phillips vs Pozi) */}
+          {product.variants && (
+            <div className="space-y-2">
+              <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Drive Type</Label>
+              <RadioGroup 
+                defaultValue={selectedVariantType || ""} 
+                onValueChange={setSelectedVariantType}
+                className="flex gap-4"
+              >
+                {product.variants.map((v) => (
+                  <div key={v.type} className="flex items-center space-x-2">
+                    <RadioGroupItem value={v.type} id={`${product.id}-${v.type}`} />
+                    <Label htmlFor={`${product.id}-${v.type}`} className="text-xs font-bold">{v.type}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          )}
+
+          {/* Size Selection */}
+          {(product.sizes || activeVariant?.options) && (
+            <div className="space-y-2">
+              <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Specification</Label>
+              <Select defaultValue={(product.sizes || activeVariant?.options)?.[0]}>
+                <SelectTrigger className="w-full h-10 rounded-xl bg-muted/30 border-none focus:ring-secondary">
+                  <SelectValue placeholder="Choose dimension" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(product.sizes || activeVariant?.options)?.map((size) => (
+                    <SelectItem key={size} value={size}>{size}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
+          <div className="pt-2 flex flex-wrap gap-2">
+             <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.material}</span>
+             <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.finish}</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-between mt-8">
+          <div>
+            <p className="text-2xl font-headline font-bold text-primary">
+              ${product.price.toFixed(2)}
+            </p>
+            <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">per unit</p>
+          </div>
+          <Button size="lg" className="bg-primary hover:bg-secondary text-white rounded-2xl h-12 px-6 transition-all group-hover:scale-105 shadow-lg shadow-primary/10">
+            Add to Cart <ShoppingCart className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
 function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category');
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [priceRange, setPriceRange] = useState([0, 5]);
+  const [priceRange, setPriceRange] = useState([0, 10]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -36,14 +140,14 @@ function ShopContent() {
   const isFiltered = useMemo(() => {
     const categoryFiltered = selectedCategories.length > 0 && !selectedCategories.includes('all');
     const searchFiltered = searchQuery !== '';
-    const priceFiltered = priceRange[0] !== 0 || priceRange[1] !== 5;
+    const priceFiltered = priceRange[0] !== 0 || priceRange[1] !== 10;
     return categoryFiltered || searchFiltered || priceFiltered;
   }, [selectedCategories, searchQuery, priceRange]);
 
   const clearAllFilters = () => {
     setSelectedCategories(['all']);
     setSearchQuery('');
-    setPriceRange([0, 5]);
+    setPriceRange([0, 10]);
   };
 
   const filteredProducts = useMemo(() => {
@@ -114,7 +218,7 @@ function ShopContent() {
 
               <div className="space-y-4">
                 <h3 className="font-bold text-xs uppercase tracking-widest text-muted-foreground">Category</h3>
-                <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="space-y-1.5 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                   {CATEGORIES.map(cat => (
                     <div 
                       key={cat.id} 
@@ -145,7 +249,7 @@ function ShopContent() {
                 </div>
                 <Slider 
                   value={priceRange} 
-                  max={5} 
+                  max={10} 
                   step={0.1} 
                   onValueChange={setPriceRange}
                   className="py-4"
@@ -208,60 +312,7 @@ function ShopContent() {
           {filteredProducts.length > 0 ? (
             <div className={viewMode === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8" : "space-y-6"}>
               {filteredProducts.map((product) => (
-                <Card key={product.id} className={viewMode === 'grid' ? "group hover:shadow-2xl transition-all duration-500 border-none bg-white rounded-[32px] overflow-hidden" : "flex flex-col sm:flex-row group hover:shadow-2xl transition-all duration-500 border-none bg-white rounded-[32px] overflow-hidden min-h-[220px]"}>
-                  <div className={viewMode === 'grid' ? "relative aspect-square overflow-hidden bg-muted/20" : "relative w-full sm:w-64 h-64 sm:h-auto bg-muted/20 shrink-0"}>
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      className="object-contain p-8 group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between p-8 flex-grow">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-start">
-                        <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.2em]">{product.category.replace(/-/g, ' ')}</p>
-                        <Badge className="bg-primary/5 text-primary border-none rounded-full text-[10px] px-3 font-bold">{product.stockStatus}</Badge>
-                      </div>
-                      <h3 className="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors line-clamp-1">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed mb-4">{product.description}</p>
-                      
-                      {/* Size Selection for Anchors and compatible products */}
-                      {product.sizes && product.sizes.length > 0 && (
-                        <div className="space-y-2 mb-4">
-                          <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Size Specification</Label>
-                          <Select defaultValue={product.sizes[0]}>
-                            <SelectTrigger className="w-full h-10 rounded-xl bg-muted/30 border-none focus:ring-secondary">
-                              <SelectValue placeholder="Choose dimension" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {product.sizes.map((size) => (
-                                <SelectItem key={size} value={size}>{size}</SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      )}
-
-                      <div className="pt-2 flex flex-wrap gap-2">
-                         <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.material}</span>
-                         <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.finish}</span>
-                         <span className="text-[10px] font-bold bg-secondary/10 px-3 py-1 rounded-full text-secondary uppercase">{product.specs.length}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-8">
-                      <div>
-                        <p className="text-2xl font-headline font-bold text-primary">
-                          ${product.price.toFixed(2)}
-                        </p>
-                        <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">per unit</p>
-                      </div>
-                      <Button size="lg" className="bg-primary hover:bg-secondary text-white rounded-2xl h-12 px-6 transition-all group-hover:scale-105 shadow-lg shadow-primary/10">
-                        Add to Cart <ShoppingCart className="ml-2 h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
+                <ProductCard key={product.id} product={product} viewMode={viewMode} />
               ))}
             </div>
           ) : (
