@@ -224,8 +224,26 @@ function ShopContent() {
                         <Badge className="bg-primary/5 text-primary border-none rounded-full text-[10px] px-3 font-bold">{product.stockStatus}</Badge>
                       </div>
                       <h3 className="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors line-clamp-1">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed">{product.description}</p>
-                      <div className="pt-4 flex flex-wrap gap-2">
+                      <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed mb-4">{product.description}</p>
+                      
+                      {/* Size Selection for Anchors and compatible products */}
+                      {product.sizes && product.sizes.length > 0 && (
+                        <div className="space-y-2 mb-4">
+                          <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Size Specification</Label>
+                          <Select defaultValue={product.sizes[0]}>
+                            <SelectTrigger className="w-full h-10 rounded-xl bg-muted/30 border-none focus:ring-secondary">
+                              <SelectValue placeholder="Choose dimension" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {product.sizes.map((size) => (
+                                <SelectItem key={size} value={size}>{size}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      )}
+
+                      <div className="pt-2 flex flex-wrap gap-2">
                          <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.material}</span>
                          <span className="text-[10px] font-bold bg-muted/50 px-3 py-1 rounded-full text-primary/60 uppercase">{product.finish}</span>
                          <span className="text-[10px] font-bold bg-secondary/10 px-3 py-1 rounded-full text-secondary uppercase">{product.specs.length}</span>

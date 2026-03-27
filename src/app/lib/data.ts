@@ -1,4 +1,3 @@
-
 import { Product, Category } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -96,6 +95,81 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const PRODUCTS: Product[] = [
+  {
+    id: 'anchor-1',
+    name: '3 Piece Expansion Anchors Assembled Z-Yellow',
+    description: 'Heavy-duty 3-piece expansion anchor for concrete and masonry fastening.',
+    category: 'anchors',
+    material: 'Steel',
+    finish: 'Zinc Yellow',
+    headStyle: 'Hex',
+    driveType: 'External Hex',
+    price: 1.25,
+    image: 'https://i.ibb.co/C5cRQQsf/3-PIECE-EXPANSION-ANCHORS-ASSEMBLED-Z-YELLOW.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['5 X 50', '6 X 65', '8 X 65', '10 X 75', '12 X 85', '16 X 135', '20 X 140'],
+    specs: { length: 'Multiple', diameter: 'Multiple', threadType: 'Expansion' }
+  },
+  {
+    id: 'anchor-2',
+    name: 'Drop In Anchors - Zinc Plated',
+    description: 'Internally threaded drop-in anchor for flush mounting in concrete.',
+    category: 'anchors',
+    material: 'Steel',
+    finish: 'Zinc Plated',
+    headStyle: 'Flat (Internal)',
+    driveType: 'Metric Thread',
+    price: 0.95,
+    image: 'https://i.ibb.co/XfqQSZ6T/DROP-IN-ANCHORS-ZINC-PLATED.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['M6', 'M8', 'M10', 'M12', 'M16', 'M20'],
+    specs: { length: 'Flush', diameter: 'M6-M20', threadType: 'Metric' }
+  },
+  {
+    id: 'anchor-3',
+    name: 'Nail-In Anchors With Nylon Plug',
+    description: 'Nylon nail-in anchor for rapid, light-duty fastening into solid substrates.',
+    category: 'anchors',
+    material: 'Nylon / Steel',
+    finish: 'Zinc Plated / Natural',
+    headStyle: 'Pan Head',
+    driveType: 'Nail / Screw',
+    price: 0.12,
+    image: 'https://i.ibb.co/MxYBhryC/NAIL-IN-ANCHORS-WITH-NYLON-PLUG.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['5 X 35', '5 X 40', '5 X 50', '6 X 35', '6 X 40', '6 X 45', '6 X 50', '6 X 55', '6 X 60', '6 X 70', '6 X 80', '8 X 60', '8 X 80', '8 X 100', '8 X 120', '8 X 135'],
+    specs: { length: 'Multiple', diameter: '5mm-8mm', threadType: 'Nail-In' }
+  },
+  {
+    id: 'anchor-4',
+    name: 'Sleeve Anchors - Zinc Yellow',
+    description: 'High-strength sleeve anchor with hex nut and washer for structural fixing.',
+    category: 'anchors',
+    material: 'Steel',
+    finish: 'Zinc Yellow',
+    headStyle: 'Hex Nut',
+    driveType: 'External Hex',
+    price: 0.85,
+    image: 'https://i.ibb.co/9m6zR4tW/SLEEVE-ANCHORS-ZINC-YELLOW.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['6 X 40', '6 X 60', '8 X 40', '8 X 65', '8 X 85', '10 X 50', '10 X 77', '10 X 97', '12 X 60', '12 X 75', '12 X 100', '16 X 50', '16 X 65', '16 X 111', '16 X 147', '20 X 105', '20 X 130', '20 X 160'],
+    specs: { length: 'Multiple', diameter: '6mm-20mm', threadType: 'Expansion Sleeve' }
+  },
+  {
+    id: 'anchor-5',
+    name: 'Wedge Anchors - Zinc Yellow',
+    description: 'Expansion wedge anchor for heavy-duty anchoring into solid concrete.',
+    category: 'anchors',
+    material: 'Steel',
+    finish: 'Zinc Yellow',
+    headStyle: 'Hex Nut',
+    driveType: 'Metric Thread',
+    price: 1.45,
+    image: 'https://i.ibb.co/pByfWQM1/WEDGE-ANCHORS-ZINC-YELLOW.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['8 X 100', '10 X 75', '10 X 90', '12 X 80', '12 X 110', '16 X 90', '16 X 110', '16 X 130', '20 X 110', '20 X 130', '20 X 160'],
+    specs: { length: 'Multiple', diameter: '8mm-20mm', threadType: 'Metric' }
+  },
   {
     id: 'p1',
     name: 'Csk Pozi Chipboard Screw Z/P',

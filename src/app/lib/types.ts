@@ -1,4 +1,3 @@
-
 export interface Product {
   id: string;
   name: string;
@@ -11,6 +10,7 @@ export interface Product {
   price: number;
   image: string;
   stockStatus: 'In Stock' | 'Low Stock' | 'Out of Stock';
+  sizes?: string[];
   specs: {
     length: string;
     diameter: string;
