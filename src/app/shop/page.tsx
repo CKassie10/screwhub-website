@@ -156,8 +156,9 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category');
 
+  const MAX_PRICE = 100;
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [priceRange, setPriceRange] = useState([0, 10]);
+  const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -172,14 +173,14 @@ function ShopContent() {
   const isFiltered = useMemo(() => {
     const categoryFiltered = selectedCategories.length > 0 && !selectedCategories.includes('all');
     const searchFiltered = searchQuery !== '';
-    const priceFiltered = priceRange[0] !== 0 || priceRange[1] !== 10;
+    const priceFiltered = priceRange[0] !== 0 || priceRange[1] !== MAX_PRICE;
     return categoryFiltered || searchFiltered || priceFiltered;
   }, [selectedCategories, searchQuery, priceRange]);
 
   const clearAllFilters = () => {
     setSelectedCategories(['all']);
     setSearchQuery('');
-    setPriceRange([0, 10]);
+    setPriceRange([0, MAX_PRICE]);
   };
 
   const filteredProducts = useMemo(() => {
@@ -281,7 +282,7 @@ function ShopContent() {
                 </div>
                 <Slider 
                   value={priceRange} 
-                  max={10} 
+                  max={MAX_PRICE} 
                   step={0.1} 
                   onValueChange={setPriceRange}
                   className="py-4"
