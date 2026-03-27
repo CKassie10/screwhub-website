@@ -283,6 +283,36 @@ export const PRODUCTS: Product[] = [
     specs: { length: 'Multiple', diameter: '8mm-20mm', threadType: 'Metric' }
   },
   {
+    id: 'wall-plug-grey',
+    name: 'Wall Plug(Grey)',
+    description: 'Professional grey wall plugs for secure fastening in masonry and concrete.',
+    category: 'wall-plugs',
+    material: 'Nylon',
+    finish: 'Grey',
+    headStyle: 'N/A',
+    driveType: 'N/A',
+    price: 0.05,
+    image: 'https://i.ibb.co/PZL90mMy/WALL-PLUGS-1.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['5 X 25', '6 X 30', '7 X 35', '8 X 40', '10 X 50', '12 X 58', '14 x 75'],
+    specs: { length: 'Multiple', diameter: '5mm-14mm', threadType: 'Expansion' }
+  },
+  {
+    id: 'wall-plug-green',
+    name: 'Wall Plug(Green)',
+    description: 'Heavy-duty green wall plugs optimized for specific borehole requirements.',
+    category: 'wall-plugs',
+    material: 'Nylon',
+    finish: 'Green',
+    headStyle: 'N/A',
+    driveType: 'N/A',
+    price: 0.10,
+    image: 'https://i.ibb.co/Xx4kHWR6/WALL-PLUGS-2.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['11mm'],
+    specs: { length: 'N/A', diameter: '11mm', threadType: 'Expansion' }
+  },
+  {
     id: 'p1',
     name: 'Csk Pozi Chipboard Screw Z/P',
     description: 'Universal countersunk screw with Pozi drive, Zinc plated for general interior use.',
