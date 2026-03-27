@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Filter, LayoutGrid, List, SlidersHorizontal, Search, X } from 'lucide-react';
+import { ShoppingCart, Filter, LayoutGrid, List, SlidersHorizontal, Search, X, RotateCcw } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
 function ShopContent() {
@@ -78,19 +78,22 @@ function ShopContent() {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-72 space-y-8">
-          <div>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-headline font-bold flex items-center gap-2 text-primary">
-                <Filter className="h-5 w-5 text-secondary" /> Browse
-              </h2>
+          <div className="glass p-6 rounded-[32px] border shadow-sm space-y-8">
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-headline font-bold flex items-center gap-2 text-primary">
+                  <Filter className="h-5 w-5 text-secondary" /> Browse
+                </h2>
+              </div>
+              
               {isFiltered && (
                 <Button 
-                  variant="ghost" 
+                  variant="secondary" 
                   size="sm" 
                   onClick={clearAllFilters}
-                  className="text-xs font-bold text-secondary hover:text-secondary/80 h-auto p-0 flex items-center gap-1"
+                  className="w-full text-xs font-bold h-9 flex items-center justify-center gap-2 rounded-xl transition-all hover:scale-[1.02]"
                 >
-                  <X className="h-3 w-3" /> Clear All
+                  <RotateCcw className="h-3.5 w-3.5" /> Clear All Filters
                 </Button>
               )}
             </div>
@@ -103,7 +106,7 @@ function ShopContent() {
                     placeholder="Find specification..." 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-9 h-11 rounded-xl"
+                    className="pl-9 h-11 rounded-xl bg-background/50 border-muted"
                   />
                   <Search className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
                 </div>
@@ -111,18 +114,22 @@ function ShopContent() {
 
               <div className="space-y-4">
                 <h3 className="font-bold text-xs uppercase tracking-widest text-muted-foreground">Category</h3>
-                <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                   {CATEGORIES.map(cat => (
-                    <div key={cat.id} className="flex items-center space-x-3 p-1 group">
+                    <div 
+                      key={cat.id} 
+                      className={`flex items-center space-x-3 p-2 rounded-xl transition-colors cursor-pointer group ${selectedCategories.includes(cat.id) ? 'bg-secondary/10' : 'hover:bg-muted/50'}`}
+                      onClick={() => toggleCategory(cat.id)}
+                    >
                       <Checkbox 
                         id={cat.id} 
                         checked={selectedCategories.includes(cat.id)}
                         onCheckedChange={() => toggleCategory(cat.id)}
-                        className="rounded-md data-[state=checked]:bg-secondary data-[state=checked]:border-secondary"
+                        className="rounded-md data-[state=checked]:bg-secondary data-[state=checked]:border-secondary pointer-events-none"
                       />
                       <Label 
                         htmlFor={cat.id} 
-                        className={`text-sm font-medium leading-none cursor-pointer transition-colors ${selectedCategories.includes(cat.id) ? 'text-secondary font-bold' : 'text-primary/70 group-hover:text-primary'}`}
+                        className={`text-sm font-medium leading-none cursor-pointer flex-grow transition-colors ${selectedCategories.includes(cat.id) ? 'text-secondary font-bold' : 'text-primary/70 group-hover:text-primary'}`}
                       >
                         {cat.name}
                       </Label>
@@ -134,7 +141,7 @@ function ShopContent() {
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
                   <h3 className="font-bold text-xs uppercase tracking-widest text-muted-foreground">Price Bracket</h3>
-                  <span className="text-xs font-bold text-secondary">${priceRange[0]} - ${priceRange[1]}</span>
+                  <span className="text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">${priceRange[0]} - ${priceRange[1]}</span>
                 </div>
                 <Slider 
                   value={priceRange} 
@@ -147,13 +154,13 @@ function ShopContent() {
             </div>
           </div>
 
-          <div className="p-6 bg-primary text-white rounded-[24px] shadow-xl relative overflow-hidden group">
+          <div className="p-6 bg-primary text-white rounded-[32px] shadow-xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
               <SlidersHorizontal className="h-16 w-16" />
             </div>
             <h4 className="font-headline font-bold mb-2 relative z-10 text-lg">Spec Expert</h4>
             <p className="text-xs text-white/60 mb-4 relative z-10 leading-relaxed">Our team handles bespoke industrial orders for specific DIN or ISO requirements.</p>
-            <Button variant="outline" size="sm" className="w-full border-white/20 text-white hover:bg-white/10 relative z-10 rounded-xl">Contact Kamal</Button>
+            <Button variant="outline" size="sm" className="w-full border-white/20 text-white hover:bg-white/10 relative z-10 rounded-xl font-bold">Speak to Kamal</Button>
           </div>
         </aside>
 
@@ -161,7 +168,7 @@ function ShopContent() {
         <div className="flex-grow space-y-8">
           <div className="flex flex-col sm:flex-row justify-between items-center glass p-4 rounded-2xl border shadow-sm gap-4">
             <div className="flex items-center gap-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground font-medium">
                 Engineering <span className="font-bold text-primary">{filteredProducts.length}</span> verified results
               </p>
             </div>
@@ -185,7 +192,7 @@ function ShopContent() {
                 </Button>
               </div>
               <Select defaultValue="popular">
-                <SelectTrigger className="w-[160px] h-10 rounded-xl">
+                <SelectTrigger className="w-[160px] h-10 rounded-xl bg-background">
                   <SelectValue placeholder="Sort results" />
                 </SelectTrigger>
                 <SelectContent>
@@ -231,7 +238,7 @@ function ShopContent() {
                         </p>
                         <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">per unit</p>
                       </div>
-                      <Button size="lg" className="bg-primary hover:bg-secondary text-white rounded-2xl h-12 px-6 transition-all group-hover:scale-105">
+                      <Button size="lg" className="bg-primary hover:bg-secondary text-white rounded-2xl h-12 px-6 transition-all group-hover:scale-105 shadow-lg shadow-primary/10">
                         Add to Cart <ShoppingCart className="ml-2 h-4 w-4" />
                       </Button>
                     </div>
@@ -240,13 +247,34 @@ function ShopContent() {
               ))}
             </div>
           ) : (
-            <div className="py-32 text-center flex flex-col items-center justify-center glass rounded-[40px] border-2 border-dashed border-muted">
-              <div className="bg-muted/30 p-8 rounded-full mb-8">
+            <div className="py-32 text-center flex flex-col items-center justify-center glass rounded-[48px] border-2 border-dashed border-muted shadow-inner bg-muted/5">
+              <div className="bg-muted/30 p-10 rounded-full mb-8 relative">
                 <Search className="h-16 w-16 text-muted-foreground/40" />
+                <div className="absolute -top-1 -right-1 bg-secondary text-white p-2 rounded-full">
+                  <X className="h-5 w-5" />
+                </div>
               </div>
-              <h3 className="text-2xl font-headline font-bold text-primary">No Matching Specs</h3>
-              <p className="text-muted-foreground max-w-sm mx-auto mt-4 leading-relaxed">Adjust your engineering filters or search query to find the specific fastener required.</p>
-              <Button variant="link" className="text-secondary font-bold mt-6 h-auto p-0" onClick={clearAllFilters}>Reset to All Categories</Button>
+              <h3 className="text-3xl font-headline font-bold text-primary tracking-tight">No Matching Specs</h3>
+              <p className="text-muted-foreground max-w-sm mx-auto mt-4 leading-relaxed font-medium">
+                We couldn't find any fasteners matching your specific engineering criteria. 
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-10">
+                <Button 
+                  size="lg" 
+                  className="bg-primary text-white hover:bg-primary/90 rounded-2xl px-8 h-14 font-bold transition-all hover:scale-105"
+                  onClick={clearAllFilters}
+                >
+                  <RotateCcw className="mr-2 h-5 w-5" /> Reset All Filters
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="rounded-2xl px-8 h-14 font-bold border-2"
+                  onClick={() => setSearchQuery('')}
+                >
+                  Clear Search
+                </Button>
+              </div>
             </div>
           )}
         </div>
@@ -262,7 +290,10 @@ export default function ShopPage() {
       <main className="flex-grow bg-background py-12">
         <Suspense fallback={
           <div className="flex items-center justify-center min-h-[400px]">
-            <p className="text-muted-foreground font-medium">Loading catalog...</p>
+            <div className="flex flex-col items-center gap-4">
+               <RotateCcw className="h-10 w-10 text-secondary animate-spin" />
+               <p className="text-muted-foreground font-bold tracking-widest uppercase text-xs">Calibrating Catalog...</p>
+            </div>
           </div>
         }>
           <ShopContent />
