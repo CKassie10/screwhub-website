@@ -282,20 +282,6 @@ export const PRODUCTS: Product[] = [
     specs: { length: '40mm', diameter: '4.0mm', threadType: 'Full Thread' }
   },
   {
-    id: 'p2',
-    name: 'High Tensile M10 Hex Bolt',
-    description: '8.8 Grade high-tensile bolt for structural applications.',
-    category: 'bolts',
-    material: 'Steel',
-    finish: 'Zinc Plated',
-    headStyle: 'Hex',
-    driveType: 'External Hex',
-    price: 1.20,
-    image: 'https://picsum.photos/seed/bolt1/400/400',
-    stockStatus: 'In Stock',
-    specs: { length: '50mm', diameter: 'M10', threadType: 'Metric' }
-  },
-  {
     id: 'p3',
     name: 'Hex Washer Head Roofing Screw',
     description: 'Self-drilling roofing screw with bonded EPDM washer.',
