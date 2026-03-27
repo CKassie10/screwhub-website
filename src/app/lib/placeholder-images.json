@@ -8,40 +8,94 @@
       "imageHint": "industrial screws"
     },
     {
-      "id": "category-chipboard",
-      "description": "Close up of chipboard screws",
-      "imageUrl": "https://picsum.photos/seed/chipboard/400/300",
-      "imageHint": "wood screws"
+      "id": "cat-all",
+      "description": "Comprehensive range of fasteners",
+      "imageUrl": "https://picsum.photos/seed/all-fasteners/400/300",
+      "imageHint": "fasteners collection"
     },
     {
-      "id": "category-drywall",
-      "description": "Black drywall screws",
-      "imageUrl": "https://picsum.photos/seed/drywall/400/300",
-      "imageHint": "drywall screws"
+      "id": "cat-anchors",
+      "description": "Heavy duty wall and floor anchors",
+      "imageUrl": "https://picsum.photos/seed/anchors/400/300",
+      "imageHint": "wall anchors"
     },
     {
-      "id": "category-roofing",
+      "id": "cat-bits-sockets",
+      "description": "Precision driver bits and socket sets",
+      "imageUrl": "https://picsum.photos/seed/bits-sockets/400/300",
+      "imageHint": "driver bits"
+    },
+    {
+      "id": "cat-bolts",
+      "description": "Industrial grade bolts and fasteners",
+      "imageUrl": "https://picsum.photos/seed/bolts/400/300",
+      "imageHint": "steel bolts"
+    },
+    {
+      "id": "cat-new-screws",
+      "description": "Latest engineering in screw technology",
+      "imageUrl": "https://picsum.photos/seed/new-screws/400/300",
+      "imageHint": "modern screws"
+    },
+    {
+      "id": "cat-nuts",
+      "description": "Hex nuts and locking nuts",
+      "imageUrl": "https://picsum.photos/seed/nuts/400/300",
+      "imageHint": "hex nuts"
+    },
+    {
+      "id": "cat-rivets",
+      "description": "Blind rivets and pop rivets",
+      "imageUrl": "https://picsum.photos/seed/rivets/400/300",
+      "imageHint": "pop rivets"
+    },
+    {
+      "id": "cat-roofing-screws",
       "description": "Hex head roofing screws with washers",
       "imageUrl": "https://picsum.photos/seed/roofing/400/300",
       "imageHint": "roofing screws"
     },
     {
-      "id": "category-stainless",
-      "description": "Shiny stainless steel screws",
-      "imageUrl": "https://picsum.photos/seed/stainless/400/300",
-      "imageHint": "stainless screws"
+      "id": "cat-screws",
+      "description": "General purpose wood and metal screws",
+      "imageUrl": "https://picsum.photos/seed/screws/400/300",
+      "imageHint": "wood screws"
     },
     {
-      "id": "category-machine",
-      "description": "Precision machine screws",
-      "imageUrl": "https://picsum.photos/seed/machine/400/300",
-      "imageHint": "machine screws"
+      "id": "cat-self-drilling-screws",
+      "description": "Self-drilling metal screws",
+      "imageUrl": "https://picsum.photos/seed/self-drilling/400/300",
+      "imageHint": "tek screws"
     },
     {
-      "id": "category-selftapping",
-      "description": "Self-tapping metal screws",
-      "imageUrl": "https://picsum.photos/seed/selftap/400/300",
-      "imageHint": "metal screws"
+      "id": "cat-set-screws",
+      "description": "Grub screws and set screws",
+      "imageUrl": "https://picsum.photos/seed/set-screws/400/300",
+      "imageHint": "set screws"
+    },
+    {
+      "id": "cat-socket-head-fasteners",
+      "description": "Stainless steel socket head screws",
+      "imageUrl": "https://picsum.photos/seed/socket-stainless/400/300",
+      "imageHint": "stainless fasteners"
+    },
+    {
+      "id": "cat-threaded-rod",
+      "description": "Metric and imperial threaded rods",
+      "imageUrl": "https://picsum.photos/seed/threaded-rod/400/300",
+      "imageHint": "threaded rod"
+    },
+    {
+      "id": "cat-wall-plugs",
+      "description": "Nylon and plastic wall plugs",
+      "imageUrl": "https://picsum.photos/seed/wall-plugs/400/300",
+      "imageHint": "wall plugs"
+    },
+    {
+      "id": "cat-washers",
+      "description": "Flat, spring and fender washers",
+      "imageUrl": "https://picsum.photos/seed/washers/400/300",
+      "imageHint": "metal washers"
     }
   ]
 }
