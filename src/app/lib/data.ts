@@ -353,19 +353,5 @@ export const PRODUCTS: Product[] = [
     image: 'https://picsum.photos/seed/socket1/400/400',
     stockStatus: 'In Stock',
     specs: { length: '30mm', diameter: 'M8', threadType: 'Metric' }
-  },
-  {
-    id: 'p5',
-    name: 'Nylon Expansion Wall Plug',
-    description: 'Professional grade nylon plug for secure masonry fixing.',
-    category: 'wall-plugs',
-    material: 'Nylon',
-    finish: 'Natural',
-    headStyle: 'Flanged',
-    driveType: 'N/A',
-    price: 0.08,
-    image: 'https://picsum.photos/seed/plug1/400/400',
-    stockStatus: 'In Stock',
-    specs: { length: '40mm', diameter: '8mm', threadType: 'Universal' }
   }
 ];
