@@ -96,6 +96,21 @@ export const CATEGORIES: Category[] = [
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'spring-nuts-galv',
+    name: 'SPRING NUTS GALVANISED LONG SPRING',
+    description: 'Industrial-grade long spring nuts, galvanised for superior corrosion resistance in channel systems.',
+    category: 'new-screws',
+    material: 'Steel',
+    finish: 'Galvanised',
+    headStyle: 'Nut',
+    driveType: 'Threaded',
+    price: 0.65,
+    image: 'https://i.ibb.co/sJHG0Wbh/SPRING-NUTS-GALVANISED-LONG-SPRING.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['M6', 'M8', 'M10', 'M12'],
+    specs: { length: 'Long Spring', diameter: 'M6-M12', threadType: 'Metric' }
+  },
+  {
     id: 'bolt-gutter',
     name: 'Gutter Bolts Only - Zinc Plated',
     description: 'Specialized gutter bolts with a mushroom head and slotted drive, zinc plated for corrosion resistance.',
