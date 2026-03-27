@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
     price: 0.12,
     image: 'https://i.ibb.co/MxYBhryC/NAIL-IN-ANCHORS-WITH-NYLON-PLUG.jpg',
     stockStatus: 'In Stock',
-    sizes: ['5 X 35', '5 X 40', '5 X 50', '6 X 35', '6 X 40', '6 X 45', '6 X 50', '6 X 55', '6 X 60', '6 X 75', '6 X 80', '8 X 60', '8 X 80', '8 X 100', '8 X 120', '8 X 135'],
+    sizes: ['5 X 35', '5 X 40', '5 X 50', '6 X 35', '6 X 40', '6 X 45', '6 X 50', '6 X 55', '6 X 60', '6 X 70', '6 X 80', '8 X 60', '8 X 80', '8 X 100', '8 X 120', '8 X 135'],
     specs: { length: 'Multiple', diameter: '5mm-8mm', threadType: 'Nail-In' }
   },
   {
