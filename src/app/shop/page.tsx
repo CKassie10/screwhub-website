@@ -15,13 +15,14 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Filter, LayoutGrid, List, SlidersHorizontal, Search, X, RotateCcw } from 'lucide-react';
+import { ShoppingCart, Filter, LayoutGrid, List, SlidersHorizontal, Search, X, RotateCcw, Plus, Minus } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
 function ProductCard({ product, viewMode }: { product: Product, viewMode: 'grid' | 'list' }) {
   const [selectedVariantType, setSelectedVariantType] = useState<string | null>(
     product.variants?.[0]?.type || null
   );
+  const [quantity, setQuantity] = useState(1);
 
   const activeVariant = useMemo(() => {
     return product.variants?.find(v => v.type === selectedVariantType);
@@ -63,7 +64,7 @@ function ProductCard({ product, viewMode }: { product: Product, viewMode: 'grid'
             <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed">{product.description}</p>
           </div>
           
-          {/* Variant Selection (e.g., Phillips vs Pozi) */}
+          {/* Variant Selection */}
           {product.variants && (
             <div className="space-y-2">
               <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Drive Type</Label>
@@ -82,8 +83,8 @@ function ProductCard({ product, viewMode }: { product: Product, viewMode: 'grid'
             </div>
           )}
 
-          {/* Size Selection */}
-          {(product.sizes || activeVariant?.options) && (
+          {/* Specification or Quantity Selection */}
+          {(product.sizes || activeVariant?.options) ? (
             <div className="space-y-2">
               <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Select Specification</Label>
               <Select defaultValue={(product.sizes || activeVariant?.options)?.[0]}>
@@ -96,6 +97,37 @@ function ProductCard({ product, viewMode }: { product: Product, viewMode: 'grid'
                   ))}
                 </SelectContent>
               </Select>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Order Quantity</Label>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center bg-muted/30 rounded-xl p-1">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-8 w-8 rounded-lg hover:bg-white"
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  >
+                    <Minus className="h-3 w-3" />
+                  </Button>
+                  <Input 
+                    type="number" 
+                    value={quantity} 
+                    onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                    className="h-8 w-12 text-center bg-transparent border-none focus-visible:ring-0 font-bold"
+                  />
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-8 w-8 rounded-lg hover:bg-white"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    <Plus className="h-3 w-3" />
+                  </Button>
+                </div>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase">Units</span>
+              </div>
             </div>
           )}
 

@@ -96,6 +96,35 @@ export const CATEGORIES: Category[] = [
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'bolt-gutter',
+    name: 'Gutter Bolts Only - Zinc Plated',
+    description: 'Specialized gutter bolts with a mushroom head and slotted drive, zinc plated for corrosion resistance.',
+    category: 'bolts',
+    material: 'Steel',
+    finish: 'Zinc Plated',
+    headStyle: 'Mushroom Head',
+    driveType: 'Slotted',
+    price: 0.45,
+    image: 'https://i.ibb.co/Ld3hS3tS/GUTTER-BOLTS-ONLY-ZINC-PLATED.jpg',
+    stockStatus: 'In Stock',
+    sizes: ['6 X 12', '6 X 16', '6 X 20', '6 X 25', '6 X 30', '6 X 40', '6 X 50', '6 X 60', '6 X 75', 'M6', 'M6 Square Pressed Nuts'],
+    specs: { length: 'Multiple', diameter: 'M6', threadType: 'Metric' }
+  },
+  {
+    id: 'bolt-hook',
+    name: 'Hook Bolts',
+    description: 'Industrial hook bolts for secure fastening and hanging applications.',
+    category: 'bolts',
+    material: 'Steel',
+    finish: 'Zinc Plated',
+    headStyle: 'Hook',
+    driveType: 'Threaded',
+    price: 1.15,
+    image: 'https://i.ibb.co/cSr88w2p/Hook-Bolts.jpg',
+    stockStatus: 'In Stock',
+    specs: { length: 'N/A', diameter: 'N/A', threadType: 'Metric' }
+  },
+  {
     id: 'bit-1',
     name: 'Magnetic Socket / Nut Setter',
     description: 'Industrial grade magnetic nut setters for rapid fastening of hex head screws.',
