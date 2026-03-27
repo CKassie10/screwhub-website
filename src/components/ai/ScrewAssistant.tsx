@@ -1,13 +1,13 @@
-
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Bot, Sparkles, Loader2, CheckCircle2, ArrowRight, ChevronLeft, Hexagon } from 'lucide-react';
+import { Bot, Sparkles, Loader2, CheckCircle2, ArrowRight, ChevronLeft } from 'lucide-react';
 import { screwSelectorAssistant, ScrewSelectorAssistantOutput } from '@/ai/flows/screw-selector-assistant';
 import { motion, AnimatePresence } from 'framer-motion';
 
