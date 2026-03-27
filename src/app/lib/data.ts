@@ -352,6 +352,29 @@ export const PRODUCTS: Product[] = [
     specs: { length: '1m / 3m', diameter: 'M5-M20', threadType: 'Metric' }
   },
   {
+    id: 'ss-set-screws-din933',
+    name: 'STAINLESS STEEL SET SCREWS DIN 933 THE BRAND – PER 100',
+    description: 'Premium A2/A4 grade stainless steel set screws, DIN 933 compliant, sold in packs of 100 for industrial use.',
+    category: 'set-screws',
+    material: 'Stainless Steel',
+    finish: 'Natural',
+    headStyle: 'Hex',
+    driveType: 'External Hex',
+    price: 18.50,
+    image: 'https://i.ibb.co/gFMT8QLj/STAINLESS-STEEL-SET-SCREWS-DIN-933-THE-BRAND-PER-100.jpg',
+    stockStatus: 'In Stock',
+    sizes: [
+      '5 X 12', '5 X 16', '5 X 20', '5 X 25', '5 X 30', '5 X 40', '5 X 50',
+      '6 X 10', '6 X 12', '6 X 16', '6 X 20', '6 X 25', '6 X 30', '6 X 35', '6 X 40', '6 X 50', '6 X 60', '6 X 65', '6 X 75', '6 X 100',
+      '8 X 12', '8 X 16', '8 X 20', '8 X 25', '8 X 30', '8 X 35', '8 X 40', '8 X 50', '8 X 55', '8 X 60', '8 X 65', '8 X 75', '8 X 80', '8 X 100',
+      '10 X 16', '10 X 20', '10 X 25', '10 X 30', '10 X 35', '10 X 40', '10 X 50', '10 X 55', '10 X 60', '10 X 65', '10 X 70', '10 X 75', '10 X 80', '10 X 100',
+      '12 X 20', '12 X 25', '12 X 30', '12 X 35', '12 X 40', '12 X 50', '12 X 55', '12 X 60', '12 X 65', '12 X 70', '12 X 75', '12 X 80', '12 X 90', '12 X 100',
+      '16 X 25', '16 X 30', '16 X 35', '16 X 40', '16 X 50', '16 X 60', '16 X 65', '16 X 70', '16 X 75', '16 X 100',
+      '20 X 40', '20 X 50', '20 X 55', '20 X 60', '20 X 65', '20 X 70', '20 X 75', '20 X 80', '20 X 100'
+    ],
+    specs: { length: 'Multiple', diameter: 'M5-M20', threadType: 'Metric Full Thread' }
+  },
+  {
     id: 'p1',
     name: 'Csk Pozi Chipboard Screw Z/P',
     description: 'Universal countersunk screw with Pozi drive, Zinc plated for general interior use.',
